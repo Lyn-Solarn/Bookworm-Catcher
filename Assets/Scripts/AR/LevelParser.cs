@@ -40,7 +40,7 @@ public class LevelParser : MonoBehaviour
             {
                 var currentChar = rowChars[columnIndex];
 
-                // Dirt
+                // Base Block
                 if (currentChar == 'x')
                 {
                     Vector3 newPostition = new Vector3(columnIndex + 0.5f, row + 0.5f, -0.5f);
