@@ -6,14 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="515b1211-564e-4bf5-9b47-24703bcafae7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bookworm-Catcher/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bookworm-Catcher/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AR-Prefabs/BaseBlock.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AR-Prefabs/BaseBlock.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AR-Prefabs/ThinBaseBlock.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AR-Prefabs/ThinBaseBlock.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AR-Prefabs/ThinBaseBlock.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AR-Prefabs/ThinBaseBlock.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/AR-Scenes/ARTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/AR-Scenes/ARTest.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AR/LevelParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AR/LevelParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AR/TestingLevel.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AR/TestingLevel.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/NC/PlayerInputActions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/NC/PlayerInputActions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,8 +105,7 @@
       <workItem from="1776286694856" duration="721000" />
       <workItem from="1776534991258" duration="6276000" />
       <workItem from="1776729667861" duration="4974000" />
-      <workItem from="1776818492430" duration="1194000" />
-      <workItem from="1776823651949" duration="2410000" />
+      <workItem from="1776818492430" duration="2453000" />
     </task>
     <servers />
   </component>
