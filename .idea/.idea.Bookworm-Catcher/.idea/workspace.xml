@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="515b1211-564e-4bf5-9b47-24703bcafae7" name="Changes" comment="" />
+    <list default="true" id="515b1211-564e-4bf5-9b47-24703bcafae7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Bookworm-Catcher/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bookworm-Catcher/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,7 +110,7 @@
       <workItem from="1776286694856" duration="721000" />
       <workItem from="1776534991258" duration="6276000" />
       <workItem from="1776729667861" duration="4974000" />
-      <workItem from="1776818492430" duration="1194000" />
+      <workItem from="1776818492430" duration="2453000" />
     </task>
     <servers />
   </component>
