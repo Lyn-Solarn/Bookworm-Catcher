@@ -5,7 +5,8 @@ using Vector3 = UnityEngine.Vector3;
 
 public class Player : MonoBehaviour, IBookwormParent
 {
-    //public static Player Instance { get; private set; }  //property for singleton pattern
+    public event EventHandler OnCaughtBookworm;
+    public static Player Instance { get; private set; }  //property for singleton pattern
     
     [SerializeField] private GameInput gameInput;
     [SerializeField] private Transform bookwormHoldPoint;
@@ -35,13 +36,13 @@ public class Player : MonoBehaviour, IBookwormParent
     
     private void Awake()
     {
-        /*
+        
         if (Instance != null)
         {
             Debug.LogError("There are multiple instances of the player");
         }
         Instance = this;
-        */
+        
     }
     
     void Start()
@@ -182,7 +183,7 @@ public class Player : MonoBehaviour, IBookwormParent
         if (_bookworm != null)
         {
             //TODO: Finish Player SetBookworm
-            //OnPickedSomething?.Invoke(this, EventArgs.Empty);
+            OnCaughtBookworm?.Invoke(this, EventArgs.Empty);
         }
     }
 
