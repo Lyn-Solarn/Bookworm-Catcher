@@ -6,6 +6,7 @@ public class GameInput : MonoBehaviour
 {
     public event EventHandler OnJump;
     public event EventHandler OnDash;
+    public event EventHandler OnDrop;
     
     private PlayerInputActions _playerInputActions;
 
@@ -16,6 +17,12 @@ public class GameInput : MonoBehaviour
 
         _playerInputActions.Player.Jump.performed += Jump_performed;
         _playerInputActions.Player.Dash.performed += Dash_performed;
+        _playerInputActions.Player.Drop.performed += Drop_performed;
+    }
+
+    private void Drop_performed(InputAction.CallbackContext obj)
+    {
+        OnDrop?.Invoke(this, EventArgs.Empty);
     }
 
     private void Dash_performed(InputAction.CallbackContext obj)
