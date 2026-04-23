@@ -218,7 +218,7 @@ MonoBehaviour:
   apexTime: 0.4
   groundLevel: 2
   leftWall: 0
-  rightWall: 38
+  rightWall: 42
 --- !u!95 &3243907441269898783
 Animator:
   serializedVersion: 7
