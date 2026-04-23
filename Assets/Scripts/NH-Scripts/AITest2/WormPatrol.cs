@@ -9,7 +9,9 @@ public class WormPatrol : MonoBehaviour
     [SerializeField] private bool movingRight = true; // This is a serialize field so the starting direction can be changed from the editor.
 
     [SerializeField] private Transform groundDetection;
-    [SerializeField] private Transform ladderDetection;
+    // [SerializeField] private Transform ladderDetection;
+    // [SerializeField] private Transform ladderUpDetection;
+    // [SerializeField] private Transform exitLadderDetection;
 
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private LayerMask ladderLayerMask;
@@ -18,7 +20,8 @@ public class WormPatrol : MonoBehaviour
     private Rigidbody2D rb;
     private bool touchingPlayer = false;
     private bool climbing = false;
-    private bool detectedDownLadder = false; // Prevents checking for down ladder opportunity every frame that a ladder is detected
+    // private bool detectedDownLadder = false; // True whenever raycast connects with down ladder, prevents multiple positives for one ladder
+    // private bool detectedUpLadder = false; // True whenever raycast connects with up ladder, prevents multiple positives for one ladder
 
 
     public enum StateMachine
@@ -79,8 +82,8 @@ public class WormPatrol : MonoBehaviour
         // Checks for when ground ends
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, obstacleRaycastDistance, groundLayerMask);
         RaycastHit2D pathAheadInfo = Physics2D.Raycast(groundDetection.position, Vector2.right, obstacleRaycastDistance, groundLayerMask);
-        RaycastHit2D ladderDownInfo = Physics2D.Raycast(ladderDetection.position, Vector2.down, obstacleRaycastDistance, ladderLayerMask);
-        RaycastHit2D ladderUpInfo = Physics2D.Raycast(ladderDetection.position, Vector2.up, obstacleRaycastDistance, ladderLayerMask);
+        // RaycastHit2D ladderDownInfo = Physics2D.Raycast(ladderDetection.position, Vector2.down, obstacleRaycastDistance, ladderLayerMask);
+        // RaycastHit2D ladderUpInfo = Physics2D.Raycast(groundDetection.position, Vector2.right, obstacleRaycastDistance / 2f, ladderLayerMask);
 
         // Changes direction when ground ends
         if (groundInfo.collider == false)
@@ -91,39 +94,49 @@ public class WormPatrol : MonoBehaviour
             ChangeDirectionLeftRight();
         }
 
-        if (ladderDownInfo != false)
-        {
-            
-            if (!detectedDownLadder) {
-                int ladderChance = UnityEngine.Random.Range(0, 5);
-                // int ladderChance = 1;
-                if (ladderChance == 1)
-                {
-                    Debug.Log("Ladder down");
-                    climbing = true;
-                    rb.gravityScale = 0f;
-                    rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-                    transform.eulerAngles = new Vector3(0, 0, -90);
+        // if (ladderUpInfo != false)
+        // {
+        //     if (!detectedUpLadder) {
+        //         // int ladderChance = UnityEngine.Random.Range(0, 5);
+        //         int ladderChance = 1;
+        //         if (ladderChance == 1)
+        //         {
+        //             Debug.Log("Ladder up");
+        //             climbing = true;
+        //             rb.gravityScale = 0f;
+        //             rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        //             transform.eulerAngles = new Vector3(0, 0, 90);
                     
-                    currentState = StateMachine.ClimbDown;
-                }
-                detectedDownLadder = true;
-            }
-        } else if (ladderDownInfo == false)
-        {
-            detectedDownLadder = false;
-        }
+        //             currentState = StateMachine.ClimbUp;
+        //         }
+        //         detectedUpLadder = true;
+        //     }
+        // } else if (ladderDownInfo == false)
+        // {
+        //     detectedDownLadder = false;
+        // }
 
-        if (ladderUpInfo != false)
-        {
-            // int ladderChance = UnityEngine.Random.Range(0, 2);
-            // if (ladderChance != 0)
-            // {
-            //     Debug.Log("Ladder up");
-            //     currentState = StateMachine.ClimbUp;
-            // }
-            
-        }
+        // if (ladderDownInfo != false && ladderUpInfo == false)
+        // {
+        //     if (!detectedDownLadder) {
+        //         int ladderChance = UnityEngine.Random.Range(0, 5);
+        //         // int ladderChance = 1;
+        //         if (ladderChance == 1)
+        //         {
+        //             Debug.Log("Ladder down");
+        //             climbing = true;
+        //             rb.gravityScale = 0f;
+        //             rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+        //             transform.eulerAngles = new Vector3(0, 0, -90);
+                    
+        //             currentState = StateMachine.ClimbDown;
+        //         }
+        //         detectedDownLadder = true;
+        //     }
+        // } else if (ladderDownInfo == false)
+        // {
+        //     detectedDownLadder = false;
+        // }
     }
 
     private void ChangeDirectionLeftRight()
@@ -142,26 +155,42 @@ public class WormPatrol : MonoBehaviour
 
     private void ClimbUp()
     {
-        // Debug.Log("Climbing");
+        // // Moves worm
+        // transform.Translate(Vector2.right * speed * Time.deltaTime);
+
+        // RaycastHit2D upLadderInfo = Physics2D.Raycast(exitLadderDetection.position, Vector2.down, obstacleRaycastDistance / 2.2f, ladderLayerMask);
+        // RaycastHit2D floorInfo = Physics2D.Raycast(exitLadderDetection.position, Vector2.down, obstacleRaycastDistance / 2.2f, groundLayerMask);
+        // if (upLadderInfo == false && floorInfo == false)
+        // {
+        //     // Occurs when raycast from middle of bookworm detects no ladder and no floor
+        //     Debug.Log("Returning to patrol");
+        //     climbing = false;
+        //     rb.gravityScale = 1f;
+        //     rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+        //     rb.constraints &= ~RigidbodyConstraints2D.FreezeRotation;
+        //     transform.eulerAngles = new Vector3(0, 0, 0);
+
+        //     currentState = StateMachine.Patrol;
+        // }
     }
 
     private void ClimbDown()
     {
-        // Moves worm
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        // // Moves worm
+        // transform.Translate(Vector2.right * speed * Time.deltaTime);
 
-        RaycastHit2D pathAheadInfo = Physics2D.Raycast(groundDetection.position, Vector2.right, obstacleRaycastDistance, groundLayerMask);
-        if (pathAheadInfo.collider != false)
-        {
-            Debug.Log("Returning to patrol");
-            climbing = false;
-            rb.gravityScale = 1f;
-            rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
-            rb.constraints &= ~RigidbodyConstraints2D.FreezeRotation;
-            transform.eulerAngles = new Vector3(0, 0, 0);
+        // RaycastHit2D pathAheadInfo = Physics2D.Raycast(groundDetection.position, Vector2.right, obstacleRaycastDistance, groundLayerMask);
+        // if (pathAheadInfo.collider != false)
+        // {
+        //     Debug.Log("Returning to patrol");
+        //     climbing = false;
+        //     rb.gravityScale = 1f;
+        //     rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
+        //     rb.constraints &= ~RigidbodyConstraints2D.FreezeRotation;
+        //     transform.eulerAngles = new Vector3(0, 0, 0);
 
-            currentState = StateMachine.Patrol;
-        }
+        //     currentState = StateMachine.Patrol;
+        // }
     }
 
     private void BookwormCaught(object sender, EventArgs e)
