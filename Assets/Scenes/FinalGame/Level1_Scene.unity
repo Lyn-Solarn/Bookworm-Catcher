@@ -300,6 +300,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1522558735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7222850439431027806, guid: 1e5efc67b03f21e47ba909d2ad9b1132, type: 3}
+  m_PrefabInstance: {fileID: 159564303686104228}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1796534359
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +411,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1706e10599371cc47b127a4bb36a82bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PausedMenu
-  pausedMenu: {fileID: 0}
+  pausedMenu: {fileID: 1522558735}
+  mainMenuSceneIndex: 0
+  optionsSceneIndex: 2
 --- !u!114 &1796534364
 MonoBehaviour:
   m_ObjectHideFlags: 0
