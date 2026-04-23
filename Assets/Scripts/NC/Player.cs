@@ -115,7 +115,7 @@ public class Player : MonoBehaviour, IBookwormParent
         //check for on ladder
         _onLadder = Physics2D.Raycast(transform.position, Vector2.down, .05f, LayerMask.GetMask("Ladder"));
         //check for on ground/jump capability
-        _isGrounded = Physics2D.Raycast(transform.position, Vector3.down, 1.01f, LayerMask.GetMask("GroundLayer"));
+        _isGrounded = Physics2D.Raycast(transform.position, Vector3.down, 0.1f, LayerMask.GetMask("GroundLayer"));
         Debug.DrawRay(transform.position, Vector2.down * 1.01f, Color.red);
         _canJump = _isGrounded || _onLadder;
         
