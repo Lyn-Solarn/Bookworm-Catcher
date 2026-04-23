@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private int firstLevelSceneIndex = 1;
+    [SerializeField] private int firstLevelSceneIndex = 4;
     [SerializeField] private int optionsSceneIndex = 2;
 
     //Goes to the first level game scene

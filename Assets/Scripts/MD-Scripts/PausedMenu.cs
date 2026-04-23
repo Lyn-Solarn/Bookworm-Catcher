@@ -28,6 +28,23 @@ public class PausedMenu : MonoBehaviour
             Time.timeScale = 0f;
         }
     }
+
+    //Resumes the game
+    public void ResumeGame(){
+        if (pausedMenu == null)
+        {
+            if (!hasShownMissingReferenceWarning)
+            {
+                Debug.LogWarning("PausedMenu is not assigned in the Inspector on PausedMenu.");
+                hasShownMissingReferenceWarning = true;
+            }
+
+            return;
+        }
+
+        pausedMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
     
     //Goes to the main menu scene
    public void OpenMainMenu(){
