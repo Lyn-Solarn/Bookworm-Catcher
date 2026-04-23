@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AR-Scenes/ARTest.unity
     guid: 27f5bf8edbba3d244bf03573e32b0683
+  - enabled: 1
+    path: Assets/Scenes/MD-Scenes/PausedSettingsButton.unity
+    guid: 84c3678cec2b6e14fa4d8045d859d686
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

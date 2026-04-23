@@ -6,7 +6,7 @@ public class PausedMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pausedMenu;
     [SerializeField] private int mainMenuSceneIndex = 0;
-    [SerializeField] private int optionsSceneIndex = 2;
+    [SerializeField] private int optionsSceneIndex = 8;
     private bool hasShownMissingReferenceWarning;
 
     void Update()
@@ -53,7 +53,7 @@ public class PausedMenu : MonoBehaviour
    }
 
     //Goes to the options menu scene
-   public void OpeSettings(){
+   public void OpenSettings(){
     SceneManager.LoadSceneAsync(optionsSceneIndex);
    }
 
