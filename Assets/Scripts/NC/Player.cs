@@ -20,6 +20,10 @@ public class Player : MonoBehaviour, IBookwormParent
     [SerializeField] private float groundLevel;
     [SerializeField] private float leftWall = -9f;
     [SerializeField] private float rightWall = 9f;
+    
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private float footOffset = 0.5f;   // Center to feet
+    [SerializeField] private float skin = 0.02f;        // Small landing buffer
 
     //---------Moises---------
     public enum State
@@ -99,12 +103,14 @@ public class Player : MonoBehaviour, IBookwormParent
 
     void FixedUpdate()
     {
+        float dt = Time.fixedDeltaTime;
         float currentMoveSpeed = baseMoveSpeed;
+
         //handle dash timer
         if (_dashActive)
         {
-            _dashTimer += Time.deltaTime;
-            currentMoveSpeed = 1.5f*baseMoveSpeed; //move twice as fast during dash
+            _dashTimer += dt;
+            currentMoveSpeed = 1.5f * baseMoveSpeed; //move faster during dash
             if (_dashTimer > 2f)
             {
                 _dashTimer = 0f;
@@ -112,51 +118,131 @@ public class Player : MonoBehaviour, IBookwormParent
             }
         }
 
-        //check for on ladder
-        _onLadder = Physics2D.Raycast(transform.position, Vector2.down, .05f, LayerMask.GetMask("Ladder"));
-        //check for on ground/jump capability
-        _isGrounded = Physics2D.Raycast(transform.position, Vector3.down, 0.1f, LayerMask.GetMask("GroundLayer"));
-        Debug.DrawRay(transform.position, Vector2.down * 1.01f, Color.red);
-        _canJump = _isGrounded || _onLadder;
-        
-        //x movement things
-        float moveDistance = currentMoveSpeed * Time.deltaTime;
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
+
+        Vector2 startPosition = transform.position;
+        Vector2 feetStart = startPosition + Vector2.down * footOffset;
+
+        //check for on ladder
+        _onLadder = Physics2D.Raycast(feetStart, Vector2.down, 0.1f, LayerMask.GetMask("Ladder"));
+
+        //x movement things
+        float moveDistance = currentMoveSpeed * dt;
         float deltaX = inputVector.x * moveDistance;
-        
-        //falling if not on ground or onLadder
+
+        //falling if not on ground or on ladder
         float gravity = 2f * apexHeight / (apexTime * apexTime);
         if (!_isGrounded && !_onLadder)
         {
-            _jumpVelocity -= gravity * Time.deltaTime;
+            _jumpVelocity -= gravity * dt;
         }
-        else if (_jumpVelocity <= -.1f)
+        else if (_jumpVelocity < 0f)
         {
             _jumpVelocity = 0f;
         }
 
         if (_onLadder)
         {
-            //Debug.Log("Player_OnLadder");
             _verticalVelocity = inputVector.y * ladderMoveSpeed;
         }
         else
         {
             _verticalVelocity = 0f;
         }
-        
+
         float yVelocity = _jumpVelocity + _verticalVelocity;
-        float deltaY = yVelocity * Time.deltaTime;
+        float deltaY = yVelocity * dt;
 
         if (_dropping)
         {
-            deltaY = -dropMoveSpeed * gravity * Time.deltaTime;
+            deltaY = -dropMoveSpeed * dt;
             _dropping = false;
         }
-        
-        transform.position += new Vector3(deltaX, deltaY, 0);
 
-        Debug.Log(_isGrounded);
+        // Start by assuming previous grounded state may continue
+        bool landedThisFrame = false;
+
+        // Only try to land on platforms when moving downward and not on ladder
+        if (!_onLadder && deltaY <= 0f)
+        {
+            float castDistance = Mathf.Abs(deltaY) + skin + 0.05f;
+
+            RaycastHit2D hit = Physics2D.Raycast(
+                feetStart + Vector2.up * 0.05f,
+                Vector2.down,
+                castDistance,
+                groundMask
+            );
+
+            Debug.DrawRay(
+                feetStart + Vector2.up * 0.05f,
+                Vector2.down * castDistance,
+                hit.collider != null ? Color.green : Color.red
+            );
+
+            if (hit.collider != null && hit.normal.y > 0.5f)
+            {
+                float platformTop = hit.collider.bounds.max.y;
+                float feetEndY = feetStart.y + deltaY;
+
+
+                // If the player's feet cross the platform top during this physics step, snap the player onto the platform and reset downward velocity.
+                if (feetStart.y >= platformTop - skin && feetEndY <= platformTop + skin)
+                {
+                    Vector2 snappedPosition = startPosition;
+                    snappedPosition.x += deltaX;
+                    snappedPosition.y = platformTop + footOffset + skin;
+
+                    transform.position = snappedPosition;
+
+                    _isGrounded = true;
+                    _canJump = true;
+                    _canDoubleJump = false;
+                    _jumpVelocity = 0f;
+                    _verticalVelocity = 0f;
+                    landedThisFrame = true;
+
+                    ClampPosition();
+
+                    //---------Moises---------
+                    UpdatePlayerState();
+                    previousPosition = transform.position;
+                    previousState = currentState;
+                    //------------------------
+
+                    return;
+                }
+            }
+        }
+
+        // No landing this frame, move normally
+        transform.position = startPosition + new Vector2(deltaX, deltaY);
+
+        // Short grounded probe after movement so standing still still counts as grounded
+        Vector2 feetNow = (Vector2)transform.position + Vector2.down * footOffset;
+
+        RaycastHit2D groundedHit = Physics2D.Raycast(
+            feetNow + Vector2.up * 0.1f,
+            Vector2.down,
+            0.2f,
+            groundMask
+        );
+
+        _isGrounded = groundedHit.collider != null;
+
+        Debug.DrawRay(
+            feetNow + Vector2.up * 0.1f,
+            Vector2.down * 0.2f,
+            _isGrounded ? Color.green : Color.red
+        );
+
+        _canJump = _isGrounded || _onLadder;
+
+        if (_isGrounded && !landedThisFrame && _jumpVelocity < 0f)
+        {
+            _jumpVelocity = 0f;
+        }
+
         ClampPosition();
 
         //---------Moises---------

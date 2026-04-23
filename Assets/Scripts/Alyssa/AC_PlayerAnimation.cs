@@ -36,6 +36,13 @@ public class AC_PlayerAnimation : MonoBehaviour
             SwitchAnimation("FacingRight");
         }
             
+        if (!Keyboard.current.wKey.isPressed &&
+            !Keyboard.current.aKey.isPressed &&
+            !Keyboard.current.sKey.isPressed &&
+            !Keyboard.current.dKey.isPressed)
+        {
+            SwitchAnimation("FacingFront");
+        }
     }
 
     private void SwitchAnimation(string newAnim)

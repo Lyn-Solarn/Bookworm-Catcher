@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="515b1211-564e-4bf5-9b47-24703bcafae7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Bookworm-Catcher/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Bookworm-Catcher/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AR-Prefabs/Bookworm.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AR-Prefabs/Bookworm.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/FinalGame/Level1_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/FinalGame/Level1_Scene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AR/TestingLevel.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AR/TestingLevel.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Alyssa/AC_PlayerAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Alyssa/AC_PlayerAnimation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/NC/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/NC/Player.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +38,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;AndrewRyer-test&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;MainLevel__Setup&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -108,6 +112,7 @@
       <workItem from="1776534991258" duration="6276000" />
       <workItem from="1776729667861" duration="4974000" />
       <workItem from="1776818492430" duration="4021000" />
+      <workItem from="1776962937702" duration="4286000" />
     </task>
     <servers />
   </component>
