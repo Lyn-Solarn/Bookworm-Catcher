@@ -27,7 +27,7 @@ public class WormAttackLadder : MonoBehaviour
     [SerializeField] private GameObject bookProjectilePrefab;
     [SerializeField] private GameObject slimePrefab;
 
-    [SerializeField] private float attackRate;
+    [SerializeField] private float attackDelay = 5f;
     private float attackTimer = 5f;
     [SerializeField] private float retreatTimerMax = 3f;
     [SerializeField] private float retreatSpeedMultiplier = 2f;
@@ -93,12 +93,12 @@ public class WormAttackLadder : MonoBehaviour
 
         if (ladderInfo.collider != false)
         {
-            attackTimer = attackRate; // Reset attack timer
+            attackTimer = attackDelay; // Reset attack timer
             currentState = StateMachine.Attack;
         }
 
         // Changes direction when ground ends
-        if (groundInfo.collider == false)
+        if (groundInfo.collider == false && ladderInfo.collider == false)
         {
             ChangeDirectionLeftRight();
         } else if (pathAheadInfo.collider != false)
@@ -128,7 +128,7 @@ public class WormAttackLadder : MonoBehaviour
             // Instantiate book projectile at spawn point
             Vector3 projectileSpawnPoint = bookProjectileSpawn.position;
             Instantiate(bookProjectilePrefab, projectileSpawnPoint, Quaternion.identity);
-            attackTimer = attackRate; // Reset attack timer
+            attackTimer = attackDelay; // Reset attack timer
         }
 
         DetectPlayer();
