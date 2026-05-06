@@ -111,7 +111,7 @@ MonoBehaviour:
   selectedSprite: {fileID: 5638645890722442529, guid: 1432fe60af88d184bbb7e8b25153fb0c, type: 3}
   minRange: 3
   maxRange: 3
-  paperBurst: {fileID: 3688329601342043502}
+  paperBurst: {fileID: 0}
 --- !u!114 &1788279089278851586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +221,6 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7977865441569105069}
-  - {fileID: 7910905574909833377}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &-3220705021067083769
@@ -301,70 +300,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3159c563104d6924e8caf71feebfc51b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OneWayPlatform
---- !u!1001 &3334244538684248149
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 5717774313821219229}
-    m_Modifications:
-    - target: {fileID: 2210619184139773716, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
-      propertyPath: m_Name
-      value: PaperDebris
-      objectReference: {fileID: 0}
-    - target: {fileID: 4867462156815687924, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4867462156815687924, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.01701
-      objectReference: {fileID: 0}
-    - target: {fileID: 4867462156815687924, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4867462156815687924, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4867462156815687924, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4867462156815687924, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4867462156815687924, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4867462156815687924, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4867462156815687924, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4867462156815687924, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
---- !u!198 &3688329601342043502 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2119517041936524603, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
-  m_PrefabInstance: {fileID: 3334244538684248149}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7910905574909833377 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4867462156815687924, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
-  m_PrefabInstance: {fileID: 3334244538684248149}
-  m_PrefabAsset: {fileID: 0}
