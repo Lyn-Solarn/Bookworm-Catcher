@@ -277,9 +277,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 461527528}
-        m_TargetAssemblyTypeName: PausedMenu, Assembly-CSharp
-        m_MethodName: RestartLevel
+      - m_Target: {fileID: 1368986492}
+        m_TargetAssemblyTypeName: GameOverButtons, Assembly-CSharp
+        m_MethodName: TryAgain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1354,8 +1354,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 461527528}
-        m_TargetAssemblyTypeName: PausedMenu, Assembly-CSharp
+      - m_Target: {fileID: 1167105896}
+        m_TargetAssemblyTypeName: PauseMenuButtons, Assembly-CSharp
         m_MethodName: OpenMainMenu
         m_Mode: 1
         m_Arguments:
@@ -1511,10 +1511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1706e10599371cc47b127a4bb36a82bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PausedMenu
-  pausedMenu: {fileID: 0}
-  mainMenuSceneIndex: 0
-  optionsSceneIndex: 2
-  pausedSettingsSceneName: PausedSettingsButton
+  pauseContainer: {fileID: 786188892}
 --- !u!114 &461527529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2041,7 +2038,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreSystem
   startingScore: 0
-  testWormCount: 4
 --- !u!4 &1043730083
 Transform:
   m_ObjectHideFlags: 0
@@ -2345,12 +2341,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1167105894}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1706e10599371cc47b127a4bb36a82bb, type: 3}
+  m_Script: {fileID: 11500000, guid: b28a9cf7a0419234a9c3b2bc3084e0b5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PausedMenu
-  pausedMenu: {fileID: 786188892}
+  m_EditorClassIdentifier: Assembly-CSharp::PauseMenuButtons
+  pauseContainer: {fileID: 786188892}
   mainMenuSceneIndex: 0
-  optionsSceneIndex: 2
+  optionsSceneIndex: 8
   pausedSettingsSceneName: PausedSettingsButton
 --- !u!1 &1175189841
 GameObject:
@@ -2647,9 +2643,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 461527528}
-        m_TargetAssemblyTypeName: PausedMenu, Assembly-CSharp
-        m_MethodName: OpenMainMenu
+      - m_Target: {fileID: 1167105896}
+        m_TargetAssemblyTypeName: PauseMenuButtons, Assembly-CSharp
+        m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2845,6 +2841,7 @@ GameObject:
   - component: {fileID: 1368986489}
   - component: {fileID: 1368986491}
   - component: {fileID: 1368986490}
+  - component: {fileID: 1368986492}
   m_Layer: 5
   m_Name: GameOverScreen
   m_TagString: Untagged
@@ -2910,6 +2907,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368986488}
   m_CullTransparentMesh: 1
+--- !u!114 &1368986492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368986488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d69587a7a50ae7d4d866de19b318c2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameOverButtons
+  mainMenuSceneIndex: 0
 --- !u!1 &1434616230
 GameObject:
   m_ObjectHideFlags: 0
@@ -3130,8 +3140,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 461527528}
-        m_TargetAssemblyTypeName: PausedMenu, Assembly-CSharp
+      - m_Target: {fileID: 1167105896}
+        m_TargetAssemblyTypeName: PauseMenuButtons, Assembly-CSharp
         m_MethodName: OpenSettings
         m_Mode: 1
         m_Arguments:
@@ -3338,8 +3348,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 461527528}
-        m_TargetAssemblyTypeName: PausedMenu, Assembly-CSharp
+      - m_Target: {fileID: 1368986492}
+        m_TargetAssemblyTypeName: GameOverButtons, Assembly-CSharp
         m_MethodName: OpenMainMenu
         m_Mode: 1
         m_Arguments:
@@ -3498,7 +3508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7166876e82c4cc4599ab4a9dfd6fb68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameTimer
-  startTimeSeconds: 15
+  startTimeSeconds: 2
   timerText: {fileID: 792209808}
   timerPrefix: 'TIME LEFT: '
   gameOverScreen: {fileID: 865304252}
@@ -3761,8 +3771,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 461527528}
-        m_TargetAssemblyTypeName: PausedMenu, Assembly-CSharp
+      - m_Target: {fileID: 1368986492}
+        m_TargetAssemblyTypeName: GameOverButtons, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -4089,8 +4099,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 461527528}
-        m_TargetAssemblyTypeName: PausedMenu, Assembly-CSharp
+      - m_Target: {fileID: 1167105896}
+        m_TargetAssemblyTypeName: PauseMenuButtons, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:

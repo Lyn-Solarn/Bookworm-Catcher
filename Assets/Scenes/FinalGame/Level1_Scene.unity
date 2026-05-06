@@ -268,6 +268,10 @@ PrefabInstance:
       propertyPath: gameInput
       value: 
       objectReference: {fileID: 731764292}
+    - target: {fileID: 1458327428207015338, guid: 76a088a1d98eaee44bc7f0ab625acbc6, type: 3}
+      propertyPath: dropMoveSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1670219565864756465, guid: 76a088a1d98eaee44bc7f0ab625acbc6, type: 3}
       propertyPath: playerRefactor
       value: 
@@ -433,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7166876e82c4cc4599ab4a9dfd6fb68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameTimer
-  startTimeSeconds: 100
+  startTimeSeconds: 60
   timerText: {fileID: 1818209834}
   timerPrefix: 'TIME LEFT: '
   gameOverScreen: {fileID: 144238348}
