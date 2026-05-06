@@ -37,7 +37,7 @@ public class SoundManager : MonoBehaviour
     private void Update()
     {
         if(player != null){
-            if (player.isWalking())
+            if (player.isWalking() || player.GetState() == PlayerRefactor.State.Dashing)
             {
                 if (walkingClipTimer <= 0f)
                 {
@@ -54,22 +54,22 @@ public class SoundManager : MonoBehaviour
 
     private void playWalkingClip()
     {
-            _audioSource.PlayOneShot(walking);
+        _audioSource.PlayOneShot(walking);
     }
 
     private void Player_LandingActivated(object sender, EventArgs e)
     {
-        _audioSource.PlayOneShot(landing);
+       // _audioSource.PlayOneShot(landing);
     }
 
     private void Player_DoubleJumpActivated(object sender, EventArgs e)
     {
-        _audioSource.PlayOneShot(doubleJump);
+        //_audioSource.PlayOneShot(doubleJump);
     }
 
     private void Player_SingleJumpActivated(object sender, EventArgs e)
     {
-        _audioSource.PlayOneShot(singleJump);
+        //_audioSource.PlayOneShot(singleJump);
     }
 
     public void ChangeVolume()
