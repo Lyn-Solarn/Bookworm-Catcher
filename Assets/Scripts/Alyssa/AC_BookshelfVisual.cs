@@ -26,9 +26,8 @@ public class AC_BookshelfVisual : MonoBehaviour
     
     
     public void Awake()
-    {
+    {        
         AC_Bookshelf.OnCollisionWormBookshelf += OnCollisionWormBookshelf;
-        AC_BookshelfRefactored.OnCollisionWormBookshelf += OnCollisionWormBookshelf;
     }
     
 
@@ -37,7 +36,7 @@ public class AC_BookshelfVisual : MonoBehaviour
         SelectRandomBookshelf();
         wormTouchCount = 0;
     }
-    
+
 
     private void SelectRandomBookshelf()
     {
@@ -113,6 +112,7 @@ public class AC_BookshelfVisual : MonoBehaviour
         spriteRender.GetComponent<SpriteRenderer>().sprite = selectedSprite;
         // Debug.Log(selectedSprite);
     }
+
 
     //-----Moises-----
     private void PlayPaperBurst()

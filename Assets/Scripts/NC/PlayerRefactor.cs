@@ -47,6 +47,7 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
 
     //------Alyssa--------
     private float getMovementX;
+    private float getMovementY;
     //--------------------
 
     private bool _isGrounded;
@@ -186,7 +187,8 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
         //------------------------
 
         //------Alyssa-----
-        UpdateDeltaXMovement(deltaX);
+        UpdateDeltaMovement(deltaX, deltaY);
+        //-----------------
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -465,15 +467,20 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
 
 
     //--------Alyssa----------
-    private void UpdateDeltaXMovement(float deltaX)
+    private void UpdateDeltaMovement(float deltaX, float deltaY)
     {
         getMovementX = deltaX;
-        // Debug.Log(getMovementX);
+        getMovementY = deltaY;
     }
 
     public float GetMovementX()
     {
         return getMovementX;
+    }
+
+    public float GetMovementY()
+    {
+        return getMovementY;
     }
 
     public bool GetIsGrounded()

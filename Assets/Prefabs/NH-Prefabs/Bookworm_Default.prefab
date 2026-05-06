@@ -156,6 +156,7 @@ GameObject:
   - component: {fileID: 7402327239818922531}
   - component: {fileID: 1120681144730659428}
   - component: {fileID: 1024512642113082492}
+  - component: {fileID: 7469053257156167928}
   m_Layer: 0
   m_Name: WormDefaultVisual
   m_TagString: Untagged
@@ -225,7 +226,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7903038568105789177, guid: b3ab1ee5a69276e418740ec58a9baf19, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -247,7 +248,7 @@ Animator:
   m_GameObject: {fileID: 6152557380273389613}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1b35056ec52a66e4e9f5a721ce1b0681, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8840004ba77d004448cd42cc036db43c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -259,6 +260,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7469053257156167928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6152557380273389613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a7f5d152b9db384cbe73d501767561f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AC_WormDefaultAnimation
+  wormDefault: {fileID: 5530176148827855944}
+  animator: {fileID: 1024512642113082492}
 --- !u!1 &6646320771222568294
 GameObject:
   m_ObjectHideFlags: 0
