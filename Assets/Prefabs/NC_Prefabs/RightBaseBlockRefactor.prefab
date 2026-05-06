@@ -223,7 +223,19 @@ MonoBehaviour:
   selectedSprite: {fileID: 1384659163609542390, guid: 1432fe60af88d184bbb7e8b25153fb0c, type: 3}
   minRange: 4
   maxRange: 4
-  paperBurst: {fileID: 6153541520640982154}
+  paperBurst: {fileID: 7119769375882575090}
+--- !u!114 &4126964812189560437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7405013712465551274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 989875ef2552cf747a87ac906490b4a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AC_BookshelfRefactored
 --- !u!70 &3221846057147450973
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

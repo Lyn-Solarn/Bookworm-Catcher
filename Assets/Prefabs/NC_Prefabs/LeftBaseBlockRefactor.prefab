@@ -110,7 +110,19 @@ MonoBehaviour:
   selectedSprite: {fileID: 5638645890722442529, guid: 1432fe60af88d184bbb7e8b25153fb0c, type: 3}
   minRange: 3
   maxRange: 3
-  paperBurst: {fileID: 2843113808938440427}
+  paperBurst: {fileID: 3688329601342043502}
+--- !u!114 &1788279089278851586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2190046707431549024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 989875ef2552cf747a87ac906490b4a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AC_BookshelfRefactored
 --- !u!70 &3950242461445751116
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -306,7 +318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4867462156815687924, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.01701
       objectReference: {fileID: 0}
     - target: {fileID: 4867462156815687924, guid: 47af159aa87312f479d4ef0e316da32f, type: 3}
       propertyPath: m_LocalPosition.z

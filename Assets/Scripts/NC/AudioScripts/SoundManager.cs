@@ -37,7 +37,7 @@ public class SoundManager : MonoBehaviour
     private void Update()
     {
         if(player != null){
-            if (player.isWalking())
+            if (player.GetState() == PlayerRefactor.State.Moving || player.GetState() == PlayerRefactor.State.Dashing)
             {
                 if (walkingClipTimer <= 0f)
                 {
