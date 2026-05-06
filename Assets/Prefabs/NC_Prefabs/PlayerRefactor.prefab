@@ -258,7 +258,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 1.02}
-  m_Size: {x: 1.2, y: 1.99}
+  m_Size: {x: 0.9, y: 2.1}
   m_Direction: 0
 --- !u!114 &164896049277389635
 MonoBehaviour:
@@ -368,11 +368,13 @@ MonoBehaviour:
   gameInput: {fileID: 0}
   bookwormHoldPoint: {fileID: 2186065082017284005}
   baseMoveSpeed: 7
+  slowedMoveSpeed: 5
   ladderMoveSpeed: 5
-  dropMoveSpeed: 2
+  slowedLadderMoveSpeed: 2
+  dropMoveSpeed: 1
   apexHeight: 4
   apexTime: 0.5
-  groundLevel: 6
+  groundLevel: 7
   ceilingLevel: 40
   leftWall: 0.5
   rightWall: 41.5

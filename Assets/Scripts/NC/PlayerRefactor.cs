@@ -13,8 +13,10 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
     [SerializeField] private Transform bookwormHoldPoint;
     //movement default numbers
     [SerializeField] private float baseMoveSpeed = 7f;
-    [SerializeField] private float ladderMoveSpeed = 2f;
-    [SerializeField] private float dropMoveSpeed = 2f;
+    [SerializeField] private float slowedMoveSpeed = 5f;
+    [SerializeField] private float ladderMoveSpeed = 5f;
+    [SerializeField] private float slowedLadderMoveSpeed = 2f;
+    [SerializeField] private float dropMoveSpeed = 1f;
     [SerializeField] private float apexHeight = .5f;
     [SerializeField] private float apexTime = .05f;
     //boundaries for player
@@ -64,6 +66,9 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
     private float _dashCooldownTimer;
     private bool _onLadder;
     private bool _dropping;
+    private bool _slowed;
+    private bool _slowedLadder;
+    private float _slowedLadderTimer = 3f;
     
     private float _jumpVelocity;
     private float _verticalVelocity;
@@ -105,12 +110,18 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
     void FixedUpdate()
     {
         float currentMoveSpeed = baseMoveSpeed;
+        //check for slow, then assign move speed
+        if (_slowed)
+        {
+            currentMoveSpeed = slowedMoveSpeed;
+        }
+        
         //---------MARI-------------------------
         //handle dash timer and cooldown timer
         if (_dashActive)
         {
             _dashTimer += Time.deltaTime;
-            currentMoveSpeed = 1.5f*baseMoveSpeed; //move twice as fast during dash
+            currentMoveSpeed *= 1.5f; //move faster during dash
             if (_dashTimer > dashDuration)
             {
                 _dashTimer = 0f;
@@ -128,7 +139,7 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
         }
         //--------------------------------------
         //check for on ladder
-        _onLadder = Physics2D.CircleCast(transform.position, .05f, Vector2.down, .05f, LayerMask.GetMask("Ladder"));
+        _onLadder = Physics2D.CircleCast(transform.position, .05f, Vector2.down, .1f, LayerMask.GetMask("Ladder"));
         //check for on ground/jump capability
         _isGrounded = Physics2D.Raycast(transform.position, Vector3.down, 0.1f, LayerMask.GetMask("GroundLayer"));
         Debug.DrawRay(transform.position, Vector2.down * 1.01f, Color.red);
@@ -139,6 +150,18 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();
         float deltaX = inputVector.x * moveDistance;
         
+        //y movement
+        float climbSpeed = ladderMoveSpeed;
+        if (_slowedLadder)
+        {
+            climbSpeed = slowedLadderMoveSpeed;
+            _slowedLadderTimer -= Time.deltaTime;
+            if (_slowedLadderTimer <= 0)
+            {
+                _slowedLadderTimer = 3f;
+                _slowedLadder = false;
+            }
+        }
         //falling if not on ground or onLadder
         float gravity = 2f * apexHeight / (apexTime * apexTime);
         if (!_isGrounded && !_onLadder)
@@ -153,7 +176,7 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
         if (_onLadder)
         {
             //Debug.Log("Player_OnLadder");
-            _verticalVelocity = inputVector.y * ladderMoveSpeed;
+            _verticalVelocity = inputVector.y * climbSpeed;
         }
         else
         {
@@ -197,10 +220,7 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
         {
             _onLadder = true;
         }
-        else
-        {
-            _onLadder = false;
-        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -217,8 +237,38 @@ public class PlayerRefactor : MonoBehaviour, IBookwormParent
             _bookworm.SetObjectParent(collision.GameObject().GetComponent<DepositBox>());
             ClearBookworm();
         }
+        
+        //slow speed if entering a hazard
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Hazard"))
+        {
+            _slowed = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        //go back to normal speed if not in a hazard
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Hazard"))
+        {
+            _slowed = false;
+        }
     }
     
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Bookworm>() && _bookworm == null)
+        {
+            Bookworm tempWorm =  collision.gameObject.GetComponent<Bookworm>();
+            tempWorm.SetObjectParent(this);
+            SetBookworm(tempWorm);
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Projectile"))
+        {
+            _slowedLadder = true;
+        }
+    }
+
     private void GameInput_OnDrop(object sender, EventArgs e)
     {
         //Debug.Log("PlayerRefactor_Dropping");
